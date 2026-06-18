@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – Don't Blink | SciMyth Studio</title>
+  <meta name="description" content="Privacy Policy for Don't Blink, a mobile horror game by SciMyth Studio. Learn how your data is handled and protected." />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── CSS Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-void:       #050508;
+      --bg-deep:       #0a0a10;
+      --bg-surface:    #0f0f18;
+      --bg-card:       #12121e;
+      --bg-card-hover: #161625;
+
+      --accent-blood:  #c0392b;
+      --accent-ember:  #e74c3c;
+      --accent-glow:   #ff6b6b;
+      --accent-dim:    #7f1d1d;
+
+      --text-primary:  #e8e8f0;
+      --text-muted:    #8888aa;
+      --text-faint:    #4a4a66;
+
+      --border-dim:    rgba(255,255,255,0.06);
+      --border-glow:   rgba(192,57,43,0.35);
+
+      --radius-sm:  8px;
+      --radius-md:  14px;
+      --radius-lg:  20px;
+
+      --font-display: 'Cinzel', serif;
+      --font-body:    'Inter', sans-serif;
+
+      --shadow-blood: 0 0 40px rgba(192,57,43,0.15), 0 0 80px rgba(192,57,43,0.05);
+      --shadow-card:  0 4px 24px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.04) inset;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── Ambient Background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(120,10,10,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 80%, rgba(80,5,5,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 25% at 20% 60%, rgba(60,5,5,0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Scanlines overlay ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Hero Header ── */
+    .hero {
+      text-align: center;
+      padding: 72px 0 56px;
+      position: relative;
+    }
+
+    .hero-eyepiece {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 32px;
+      position: relative;
+    }
+
+    .hero-eyepiece svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 16px rgba(192,57,43,0.7)) drop-shadow(0 0 32px rgba(192,57,43,0.4));
+      animation: eyePulse 4s ease-in-out infinite;
+    }
+
+    @keyframes eyePulse {
+      0%, 100% { filter: drop-shadow(0 0 16px rgba(192,57,43,0.7)) drop-shadow(0 0 32px rgba(192,57,43,0.4)); transform: scale(1); }
+      50%       { filter: drop-shadow(0 0 24px rgba(231,76,60,0.9)) drop-shadow(0 0 48px rgba(192,57,43,0.6)); transform: scale(1.04); }
+    }
+
+    .hero-blink-line {
+      display: block;
+      width: 2px;
+      height: 0;
+      background: var(--accent-blood);
+      margin: 0 auto;
+      animation: blinkLine 4s ease-in-out infinite;
+    }
+
+    @keyframes blinkLine {
+      0%, 100%   { height: 0; opacity: 0; }
+      48%, 52%   { height: 30px; opacity: 1; }
+    }
+
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      text-shadow: 0 0 30px rgba(192,57,43,0.5);
+      margin-bottom: 8px;
+    }
+
+    .hero-tagline span {
+      color: var(--accent-ember);
+    }
+
+    .hero-sub {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-divider {
+      width: 120px;
+      height: 1px;
+      margin: 24px auto;
+      background: linear-gradient(90deg, transparent, var(--accent-blood), transparent);
+    }
+
+    .last-updated {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(192,57,43,0.1);
+      border: 1px solid rgba(192,57,43,0.25);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 0.78rem;
+      color: var(--accent-glow);
+      letter-spacing: 0.05em;
+    }
+
+    .last-updated::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-ember);
+      box-shadow: 0 0 8px var(--accent-ember);
+      animation: dot-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes dot-pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+
+    /* ── Table of Contents ── */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      border-left: 3px solid var(--accent-blood);
+      border-radius: var(--radius-md);
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .toc-title {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-ember);
+      margin-bottom: 16px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 6px 32px;
+    }
+
+    .toc-list li a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 0;
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .toc-list li a::before {
+      content: attr(data-num);
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--accent-dim);
+      min-width: 22px;
+      transition: color 0.2s;
+    }
+
+    .toc-list li a:hover {
+      color: var(--accent-glow);
+      gap: 14px;
+    }
+
+    .toc-list li a:hover::before {
+      color: var(--accent-ember);
+    }
+
+    /* ── Section Cards ── */
+    .section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius-lg);
+      padding: 40px 44px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-card);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      scroll-margin-top: 24px;
+    }
+
+    .section:hover {
+      border-color: rgba(192,57,43,0.2);
+      box-shadow: var(--shadow-card), 0 0 24px rgba(192,57,43,0.06);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-num {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--accent-ember);
+      background: rgba(192,57,43,0.12);
+      border: 1px solid rgba(192,57,43,0.25);
+      border-radius: 6px;
+      padding: 4px 10px;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: 0.04em;
+    }
+
+    .section p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* ── Lists ── */
+    .policy-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 16px;
+    }
+
+    .policy-list li {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 7px 0 7px 24px;
+      position: relative;
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .policy-list li:last-child { border-bottom: none; }
+
+    .policy-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      box-shadow: 0 0 6px rgba(192,57,43,0.5);
+    }
+
+    /* ── Sub-groups (data collection blocks) ── */
+    .data-group {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius-sm);
+      padding: 18px 22px;
+      margin: 16px 0;
+    }
+
+    .data-group-title {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-ember);
+      margin-bottom: 10px;
+    }
+
+    /* ── External Links ── */
+    .ext-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent-glow);
+      text-decoration: none;
+      font-size: 0.875rem;
+      padding: 3px 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .ext-link:hover {
+      border-bottom-color: var(--accent-glow);
+      color: #ff8e8e;
+    }
+
+    .ext-link::after {
+      content: '↗';
+      font-size: 0.75em;
+      opacity: 0.7;
+    }
+
+    /* ── Third-Party Block ── */
+    .third-party-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .third-party-item {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .third-party-item:hover {
+      border-color: rgba(192,57,43,0.3);
+    }
+
+    .third-party-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .third-party-desc {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+      margin-top: 2px;
+    }
+
+    /* ── Notice Blocks ── */
+    .notice {
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin: 16px 0;
+      border-left: 3px solid;
+      font-size: 0.875rem;
+    }
+
+    .notice.warn {
+      background: rgba(192,57,43,0.08);
+      border-left-color: var(--accent-blood);
+      color: #d4a0a0;
+    }
+
+    .notice.info {
+      background: rgba(100,100,200,0.06);
+      border-left-color: #5555aa;
+      color: #9999cc;
+    }
+
+    /* ── Contact Section ── */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(192,57,43,0.1) 0%, rgba(0,0,0,0) 60%);
+      border: 1px solid rgba(192,57,43,0.25);
+      border-radius: var(--radius-lg);
+      padding: 40px 44px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .contact-card .section-title {
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      margin-bottom: 24px;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(192,57,43,0.12);
+      border: 1px solid rgba(192,57,43,0.35);
+      border-radius: 999px;
+      padding: 12px 28px;
+      color: var(--accent-glow);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .contact-email:hover {
+      background: rgba(192,57,43,0.22);
+      box-shadow: 0 0 24px rgba(192,57,43,0.3);
+      transform: translateY(-2px);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 0 0;
+      border-top: 1px solid var(--border-dim);
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: var(--text-faint);
+      margin-bottom: 8px;
+    }
+
+    .footer-brand span {
+      color: var(--accent-dim);
+    }
+
+    .footer-note {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+    }
+
+    /* ── Google Play Recommendation Card ── */
+    .play-recommendation {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius-lg);
+      padding: 32px 44px;
+      margin-bottom: 24px;
+    }
+
+    .play-recommendation .section-header {
+      margin-bottom: 20px;
+    }
+
+    .play-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    .play-table tr {
+      border-bottom: 1px solid var(--border-dim);
+      transition: background 0.15s;
+    }
+
+    .play-table tr:last-child { border-bottom: none; }
+    .play-table tr:hover { background: rgba(255,255,255,0.02); }
+
+    .play-table td {
+      padding: 11px 14px;
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+
+    .play-table td:first-child {
+      color: var(--text-faint);
+      font-weight: 500;
+      width: 40%;
+      padding-left: 0;
+    }
+
+    .play-badge {
+      display: inline-block;
+      background: rgba(192,57,43,0.1);
+      border: 1px solid rgba(192,57,43,0.2);
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 0.78rem;
+      color: var(--accent-glow);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .section, .contact-card, .play-recommendation {
+        padding: 28px 24px;
+      }
+      .toc { padding: 24px; }
+      .toc-list { grid-template-columns: 1fr; }
+      .hero { padding: 48px 0 40px; }
+      .third-party-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- ── Hero ── -->
+  <header class="hero" id="top">
+    <div class="hero-eyepiece" aria-hidden="true">
+      <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer glow ring -->
+        <ellipse cx="48" cy="48" rx="44" ry="30" stroke="#c0392b" stroke-width="0.5" stroke-opacity="0.4"/>
+        <ellipse cx="48" cy="48" rx="38" ry="24" stroke="#c0392b" stroke-width="0.5" stroke-opacity="0.3"/>
+        <!-- Eye white -->
+        <path d="M4 48 Q48 8 92 48 Q48 88 4 48Z" fill="#0a0005" stroke="#c0392b" stroke-width="1"/>
+        <!-- Iris -->
+        <circle cx="48" cy="48" r="18" fill="#1a0505"/>
+        <circle cx="48" cy="48" r="18" fill="url(#irisGrad)" stroke="#c0392b" stroke-width="1"/>
+        <!-- Pupil -->
+        <circle cx="48" cy="48" r="9" fill="#020002"/>
+        <!-- Highlight -->
+        <circle cx="54" cy="42" r="3" fill="rgba(255,150,100,0.4)"/>
+        <circle cx="42" cy="53" r="1.5" fill="rgba(255,100,100,0.2)"/>
+        <!-- Veins -->
+        <path d="M4 48 Q20 42 30 46" stroke="#c0392b" stroke-width="0.6" stroke-opacity="0.5"/>
+        <path d="M92 48 Q76 44 66 47" stroke="#c0392b" stroke-width="0.6" stroke-opacity="0.5"/>
+        <path d="M4 48 Q22 54 31 50" stroke="#c0392b" stroke-width="0.4" stroke-opacity="0.3"/>
+        <!-- Lashes top -->
+        <line x1="20" y1="28" x2="22" y2="20" stroke="#c0392b" stroke-width="1" stroke-opacity="0.5"/>
+        <line x1="35" y1="22" x2="36" y2="14" stroke="#c0392b" stroke-width="1" stroke-opacity="0.5"/>
+        <line x1="48" y1="20" x2="48" y2="12" stroke="#c0392b" stroke-width="1.2" stroke-opacity="0.6"/>
+        <line x1="61" y1="22" x2="62" y2="14" stroke="#c0392b" stroke-width="1" stroke-opacity="0.5"/>
+        <line x1="75" y1="28" x2="77" y2="20" stroke="#c0392b" stroke-width="1" stroke-opacity="0.5"/>
+        <defs>
+          <radialGradient id="irisGrad" cx="50%" cy="45%" r="50%">
+            <stop offset="0%" stop-color="#e74c3c"/>
+            <stop offset="40%" stop-color="#922b21"/>
+            <stop offset="100%" stop-color="#3d0a08"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <h1 class="hero-tagline">Don't <span>Blink</span></h1>
+    <p class="hero-sub">SciMyth Studio &middot; Privacy Policy</p>
+    <div class="hero-divider" aria-hidden="true"></div>
+    <span class="last-updated">Last Updated: June 2026</span>
+  </header>
+
+  <!-- ── Table of Contents ── -->
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc-title">Contents</p>
+    <ol class="toc-list">
+      <li><a href="#introduction" data-num="01">Introduction</a></li>
+      <li><a href="#age-restrictions" data-num="02">Age Restrictions</a></li>
+      <li><a href="#information-we-collect" data-num="03">Information We Collect</a></li>
+      <li><a href="#advertising" data-num="04">Advertising &amp; Monetization</a></li>
+      <li><a href="#use-of-data" data-num="05">Use of User Data</a></li>
+      <li><a href="#data-sharing" data-num="06">Data Sharing</a></li>
+      <li><a href="#data-security" data-num="07">Data Security</a></li>
+      <li><a href="#user-controls" data-num="08">User Access &amp; Controls</a></li>
+      <li><a href="#third-party" data-num="09">Third-Party Services</a></li>
+      <li><a href="#childrens-privacy" data-num="10">Children's Privacy</a></li>
+      <li><a href="#international" data-num="11">International Users</a></li>
+      <li><a href="#changes" data-num="12">Policy Changes</a></li>
+      <li><a href="#contact" data-num="13">Contact Information</a></li>
+    </ol>
+  </nav>
+
+  <!-- ── Section 1: Introduction ── -->
+  <section class="section" id="introduction">
+    <div class="section-header">
+      <span class="section-num">§ 01</span>
+      <h2 class="section-title">Introduction</h2>
+    </div>
+    <p>Welcome to <strong>Don't Blink</strong> ("the Game"), developed by SciMyth Studio.</p>
+    <p>This Privacy Policy explains how information may be collected, used, and shared when you download or play the Game on your Android device. By downloading or playing the Game, you agree to the practices described in this Privacy Policy.</p>
+  </section>
+
+  <!-- ── Section 2: Age Restrictions ── -->
+  <section class="section" id="age-restrictions">
+    <div class="section-header">
+      <span class="section-num">§ 02</span>
+      <h2 class="section-title">Age Restrictions</h2>
+    </div>
+    <p>The Game is intended for users aged <strong>13 years and older</strong>.</p>
+    <p>The Game may contain:</p>
+    <ul class="policy-list">
+      <li>Horror themes</li>
+      <li>Suspenseful gameplay</li>
+      <li>Mild frightening content</li>
+    </ul>
+    <div class="notice warn">
+      Children under 13 should play only with parental guidance where permitted by local laws.
+    </div>
+  </section>
+
+  <!-- ── Section 3: Information We Collect ── -->
+  <section class="section" id="information-we-collect">
+    <div class="section-header">
+      <span class="section-num">§ 03</span>
+      <h2 class="section-title">Information We Collect</h2>
+    </div>
+    <p>The developer of Don't Blink <strong>does not directly collect</strong> personally identifiable information, such as:</p>
+    <ul class="policy-list">
+      <li>Name</li>
+      <li>Email address</li>
+      <li>Phone number</li>
+      <li>Home address</li>
+      <li>Government identification numbers</li>
+    </ul>
+    <div class="notice info">
+      However, third-party advertising services embedded in the Game may automatically collect certain technical and device-related information as described in Section 4.
+    </div>
+  </section>
+
+  <!-- ── Section 4: Advertising ── -->
+  <section class="section" id="advertising">
+    <div class="section-header">
+      <span class="section-num">§ 04</span>
+      <h2 class="section-title">Advertising &amp; Monetization</h2>
+    </div>
+    <p>The Game may display advertisements provided by third-party advertising partners such as <strong>Google AdMob</strong>.</p>
+
+    <div class="data-group">
+      <p class="data-group-title">Data collected by advertising services</p>
+      <ul class="policy-list">
+        <li>Device information (model, OS version)</li>
+        <li>Advertising identifiers (e.g., Android Advertising ID)</li>
+        <li>Approximate location information</li>
+        <li>App usage information</li>
+        <li>Performance and diagnostic data</li>
+      </ul>
+    </div>
+
+    <div class="data-group">
+      <p class="data-group-title">How this data is used</p>
+      <ul class="policy-list">
+        <li>Deliver relevant advertisements</li>
+        <li>Measure advertisement performance</li>
+        <li>Improve ad relevance</li>
+        <li>Prevent fraud and abuse</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Section 5: Use of Data ── -->
+  <section class="section" id="use-of-data">
+    <div class="section-header">
+      <span class="section-num">§ 05</span>
+      <h2 class="section-title">Use of User Data</h2>
+    </div>
+    <p>Information collected through advertising and analytics services may be used to:</p>
+    <ul class="policy-list">
+      <li>Provide advertisements within the Game</li>
+      <li>Improve game performance and stability</li>
+      <li>Diagnose crashes and technical issues</li>
+      <li>Analyze gameplay trends</li>
+      <li>Improve overall user experience</li>
+    </ul>
+    <div class="notice info">
+      The developer does not sell personal information to any third party.
+    </div>
+  </section>
+
+  <!-- ── Section 6: Data Sharing ── -->
+  <section class="section" id="data-sharing">
+    <div class="section-header">
+      <span class="section-num">§ 06</span>
+      <h2 class="section-title">Data Sharing</h2>
+    </div>
+    <p>The developer may share information only with trusted third-party service providers required for the operation of the Game, including:</p>
+    <ul class="policy-list">
+      <li>Advertising providers</li>
+      <li>Analytics providers</li>
+      <li>Platform providers (Google Play)</li>
+    </ul>
+    <p>These providers may process information according to their own privacy policies. The developer does not share data beyond what is necessary for the Game's operation.</p>
+  </section>
+
+  <!-- ── Section 7: Data Security ── -->
+  <section class="section" id="data-security">
+    <div class="section-header">
+      <span class="section-num">§ 07</span>
+      <h2 class="section-title">Data Security</h2>
+    </div>
+    <p>Reasonable technical and organizational measures are taken to protect information associated with the Game.</p>
+    <div class="notice warn">
+      No method of electronic storage or transmission over the internet is completely secure. Absolute security cannot be guaranteed.
+    </div>
+  </section>
+
+  <!-- ── Section 8: User Controls ── -->
+  <section class="section" id="user-controls">
+    <div class="section-header">
+      <span class="section-num">§ 08</span>
+      <h2 class="section-title">User Access &amp; Controls</h2>
+    </div>
+    <p>Depending on your device and region, you may be able to:</p>
+    <ul class="policy-list">
+      <li>Reset your advertising identifier</li>
+      <li>Limit ad personalization</li>
+      <li>Manage privacy settings through Android device settings</li>
+      <li>Control app permissions through device settings</li>
+    </ul>
+    <p>These controls can be found in your Android device's <strong>Settings → Privacy</strong> or <strong>Settings → Ads</strong> menus.</p>
+  </section>
+
+  <!-- ── Section 9: Third-Party Services ── -->
+  <section class="section" id="third-party">
+    <div class="section-header">
+      <span class="section-num">§ 09</span>
+      <h2 class="section-title">Third-Party Services</h2>
+    </div>
+    <p>The Game integrates third-party services that operate under their own privacy policies. Please review these policies to understand how each provider handles your data.</p>
+
+    <div class="third-party-grid">
+      <div class="third-party-item">
+        <div>
+          <div class="third-party-name">Google AdMob</div>
+          <div class="third-party-desc">In-app advertising network</div>
+        </div>
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="ext-link" id="admob-policy-link">Privacy Policy</a>
+      </div>
+      <div class="third-party-item">
+        <div>
+          <div class="third-party-name">Google Play Services</div>
+          <div class="third-party-desc">App distribution &amp; platform services</div>
+        </div>
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="ext-link" id="google-policy-link">Privacy Policy</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Section 10: Children's Privacy ── -->
+  <section class="section" id="childrens-privacy">
+    <div class="section-header">
+      <span class="section-num">§ 10</span>
+      <h2 class="section-title">Children's Privacy</h2>
+    </div>
+    <p>The Game is <strong>not directed toward children under the age of 13</strong>. The developer does not knowingly collect personal information from children under 13.</p>
+    <div class="notice warn">
+      If a parent or guardian believes that a child has provided personal information through the Game, please contact the developer immediately using the contact information in Section 13 so that appropriate action can be taken.
+    </div>
+  </section>
+
+  <!-- ── Section 11: International Users ── -->
+  <section class="section" id="international">
+    <div class="section-header">
+      <span class="section-num">§ 11</span>
+      <h2 class="section-title">International Users</h2>
+    </div>
+    <p>The Game may be distributed worldwide through Google Play. By using the Game, users understand that information processed by third-party service providers may be transferred to and stored in countries outside their country of residence, where different data protection laws may apply.</p>
+  </section>
+
+  <!-- ── Section 12: Policy Changes ── -->
+  <section class="section" id="changes">
+    <div class="section-header">
+      <span class="section-num">§ 12</span>
+      <h2 class="section-title">Changes to This Privacy Policy</h2>
+    </div>
+    <p>The developer may update this Privacy Policy from time to time to reflect changes in practices, technology, legal requirements, or other factors.</p>
+    <p>Any changes will be posted with an updated <strong>"Last Updated"</strong> date at the top of this page. Continued use of the Game after changes are posted constitutes your acceptance of those changes.</p>
+  </section>
+
+  <!-- ── Section 13: Contact ── -->
+  <div class="contact-card" id="contact">
+    <div class="section-header" style="justify-content:center;">
+      <span class="section-num">§ 13</span>
+      <h2 class="section-title">Contact Information</h2>
+    </div>
+    <p>For any questions, concerns, or requests regarding this Privacy Policy, please reach out to the developer directly.</p>
+    <a href="mailto:admin@scimythgames.studio" class="contact-email" id="contact-email-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      admin@scimythgames.studio
+    </a>
+    <p style="margin-top:20px; font-size:0.8rem; color: var(--text-faint);">Developer: SciMyth Studio</p>
+  </div>
+
+  <!-- ── Google Play Recommendation ── -->
+  <div class="play-recommendation" id="play-settings">
+    <div class="section-header">
+      <span class="section-num" style="background:rgba(30,100,30,0.15); border-color:rgba(30,180,30,0.25); color:#4caf50;">▶ Play</span>
+      <h2 class="section-title">Google Play Console Settings</h2>
+    </div>
+    <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:20px;">Recommended Data Safety settings for your Google Play Console listing:</p>
+    <table class="play-table" aria-label="Google Play Console recommended settings">
+      <tr>
+        <td>App Category</td>
+        <td><span class="play-badge">Game</span></td>
+      </tr>
+      <tr>
+        <td>Target Age Group</td>
+        <td><span class="play-badge">13+</span></td>
+      </tr>
+      <tr>
+        <td>Contains Ads</td>
+        <td><span class="play-badge">Yes</span></td>
+      </tr>
+      <tr>
+        <td>App Access</td>
+        <td>All functionality available without restrictions</td>
+      </tr>
+      <tr>
+        <td>Account Creation</td>
+        <td>Not required</td>
+      </tr>
+      <tr>
+        <td>User-Generated Content</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Direct Data Collection</td>
+        <td>No direct collection by developer</td>
+      </tr>
+      <tr>
+        <td>SDK Data Collection</td>
+        <td>Data may be collected by advertising SDKs (e.g., AdMob)</td>
+      </tr>
+      <tr>
+        <td>Data Sold</td>
+        <td>Data not sold by developer</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p class="footer-brand">Don't Blink &middot; <span>SciMyth Studio</span></p>
+    <p class="footer-note">&copy; 2026 SciMyth Studio. All rights reserved.</p>
+    <p class="footer-note" style="margin-top:6px;"><a href="#top" class="ext-link" style="font-size:0.78rem; color:var(--text-faint);" id="back-to-top-link">Back to top</a></p>
+  </footer>
+
+</div><!-- /wrapper -->
+
+</body>
+</html>
